@@ -17,7 +17,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           azcliversion: 2.32.0
-          inclineScripts: |
+          inlineScript: |
             az --version
 
       - name: Login to Azure
