@@ -1,0 +1,9 @@
+{
+	"name": "UAT-Testing",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e1f9db73-cdaf-472b-9a66-daea31efb9a9",
+		"tenantId": "e4e34038-ea1f-4882-b6e8-ccd776459ca0"
+	}
+}
