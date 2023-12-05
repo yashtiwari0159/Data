@@ -23,10 +23,16 @@ jobs:
             az --version
         env: 
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
+          
       - name: Create Azure CLI config directory
         run: mkdir -p ${{ runner.workspace }}/.azure
+        
       - name: List files
         run: ls -R
+
+      - name: Print Directory
+        run: pwd
+        
       - name: Login to Azure
         run: az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
         env:
