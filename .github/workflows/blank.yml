@@ -44,6 +44,9 @@ jobs:
       - name: Update Azure CLI
         run: az upgrade --yes --debug
 
+      - name: Print Azure CLI Configuration
+        run: cat $TEMP_AZURE_CONFIG_DIR/azureProfile.json
+
       - name: Print Parameters
         run: |
          echo "factoryName=${{ secrets.FACTORY_NAME }}"
