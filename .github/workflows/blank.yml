@@ -43,8 +43,8 @@ jobs:
         run: |
           az deployment group create \
             --resource-group Yash-Prod \
-            --template-file ${{ runner.workspace }}/adf-uat-ga/ARMTemplateForFactory.json \
-            --parameters ${{ runner.workspace }}/adf-uat-ga/ARMTemplateParametersForFactory.json \
+            --template-file ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateForFactory.json \
+            --parameters ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateParametersForFactory.json \
             --mode Incremental
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
