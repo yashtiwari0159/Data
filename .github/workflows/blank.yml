@@ -45,7 +45,7 @@ jobs:
         run: az upgrade --yes --debug
 
       - name: Print Azure CLI Configuration
-        run: cat $TEMP_AZURE_CONFIG_DIR/azureProfile.json
+        run: cat ${{ runner.workspace }}/.azure
 
       - name: Print Parameters
         run: |
