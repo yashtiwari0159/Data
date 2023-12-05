@@ -42,7 +42,7 @@ jobs:
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
 
       - name: Print Azure CLI Configuration
-        run: cat $AZURE_CONFIG_DIR/azureProfile.json
+        run: ls -R $AZURE_CONFIG_DIR
         
       - name: Update Azure CLI
         run: az upgrade --yes --debug
