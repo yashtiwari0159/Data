@@ -54,6 +54,10 @@ jobs:
          echo "factoryName=${{ secrets.FACTORY_NAME }}"
          echo "ls_kv_uat_properties_typeProperties_baseUrl=${{ secrets.BASE_URL }}"
          echo "ls_sto_uat_properties_typeProperties_connectionString_secretName=${{ secrets.CONNECTION_STRING_SECRET_NAME }}"
+
+      - name: Debug Command
+        run: echo "az deployment group create --resource-group Yash-Prod --template-file ${{ runner.workspace }}/adf-uat-ga/ARMTemplateForFactory.json --parameters ${{ runner.workspace }}/adf-uat-ga/ARMTemplateParametersForFactory.json --mode Incremental --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+
       - name: Deploy ARM Template to Production
         run: |
           az deployment group create \
