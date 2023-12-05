@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-uat-ga"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"ls_kv_uat_properties_typeProperties_baseUrl": {
+			"value": "https://kvuatyash.vault.azure.net/"
+		},
+		"ls_sto_uat_properties_typeProperties_connectionString_secretName": {
+			"value": "sec-uat-yash"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
