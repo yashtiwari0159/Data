@@ -36,9 +36,9 @@ jobs:
       - name: Deploy ARM Template to Production
         run: |
           az deployment group create \
-            --resource-group Yash-RG2 \
-            --template-file ${{ runner.workspace }}/UAT-Testing/ARMTemplateForFactory.json \
-            --parameters ${{ runner.workspace }}/UAT-Testing/ARMTemplateParametersForFactory.json \
+            --resource-group Yash-Prod \
+            --template-file ${{ runner.workspace }}/adf-uat-ga/ARMTemplateForFactory.json \
+            --parameters ${{ runner.workspace }}/adf-uat-ga/ARMTemplateParametersForFactory.json \
             --mode Incremental
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
