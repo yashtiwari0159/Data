@@ -46,7 +46,7 @@ jobs:
           az deployment group create \
             --resource-group Yash-Prod \
             --template-file ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateForFactory.json \
-            --parameters ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateParametersForFactory.json \
+            --parameters factoryName=adf-prod-yash ls_kv_uat_properties_typeProperties_baseUrl=https://kvprodyash.vault.azure.net/ ls_sto_uat_properties_typeProperties_connectionString_secretName=sec-prod-yash \
             --mode Incremental \
             --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         env:
