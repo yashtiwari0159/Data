@@ -42,7 +42,7 @@ jobs:
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
 
       - name: Update Azure CLI
-        run: az upgrade --yes
+        run: az upgrade --yes --debug
 
       - name: Print Parameters
         run: |
