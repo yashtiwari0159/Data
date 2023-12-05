@@ -1,0 +1,11 @@
+{
+	"name": "ls_kv_uat",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kvuatyash.vault.azure.net/"
+		}
+	}
+}

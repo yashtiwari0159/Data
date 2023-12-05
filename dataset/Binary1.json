@@ -2,7 +2,7 @@
 	"name": "Binary1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
+			"referenceName": "ls_sto_uat",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,9 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "uat-test.txt",
-				"container": "uat"
+				"fileName": "input.txt",
+				"container": "input"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

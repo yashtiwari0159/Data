@@ -1,0 +1,18 @@
+{
+	"name": "ls_sto_uat",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_kv_uat",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sec-uat-yash"
+			}
+		}
+	}
+}

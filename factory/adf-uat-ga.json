@@ -1,0 +1,9 @@
+{
+	"name": "adf-uat-ga",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "364c1f1a-e064-44e5-ac40-faffb4494eaf",
+		"tenantId": "e4e34038-ea1f-4882-b6e8-ccd776459ca0"
+	}
+}
