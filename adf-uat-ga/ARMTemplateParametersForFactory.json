@@ -3,16 +3,16 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"factoryName": {
-			"value": "adf-uat-ga"
+			"value": "adf-prod-yash"
 		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
 		"ls_kv_uat_properties_typeProperties_baseUrl": {
-			"value": "https://kvuatyash.vault.azure.net/"
+			"value": "https://kvprodyash.vault.azure.net/"
 		},
 		"ls_sto_uat_properties_typeProperties_connectionString_secretName": {
-			"value": "sec-uat-yash"
+			"value": "sec-prod-yash"
 		}
 	}
 }
