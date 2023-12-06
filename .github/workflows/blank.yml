@@ -29,13 +29,16 @@ jobs:
           
       - name: Create Azure CLI config directory
         run: mkdir -p ${{ runner.workspace }}/.azure
+      
+      - name: Create Temporary Directory
+        run: mkdir -p $HOME/azure-cli-temp
         
       - name: Login to Azure
         run: az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
          
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
+          AZURE_CONFIG_DIR:  $HOME/azure-cli-temp
 
       - name: Debug Deployment
         run: az deployment group validate --resource-group Yash-Prod --template-file ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateForFactory.json
@@ -50,4 +53,4 @@ jobs:
             --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
+          AZURE_CONFIG_DIR:  $HOME/azure-cli-temp
