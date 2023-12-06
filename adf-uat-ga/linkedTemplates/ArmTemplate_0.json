@@ -56,29 +56,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Binary1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_sto_uat",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "input.txt",
-						"container": "input"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_sto_uat')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Binary2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -94,6 +71,29 @@
 						"type": "AzureBlobStorageLocation",
 						"fileName": "output.txt",
 						"container": "output"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sto_uat')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Binary3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sto_uat",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "input.txt",
+						"container": "input"
 					}
 				}
 			},
@@ -140,7 +140,7 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "Binary1",
+								"referenceName": "Binary3",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -161,7 +161,7 @@
 				"lastPublishTime": "2023-12-05T06:17:26Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Binary1')]",
+				"[concat(variables('factoryId'), '/datasets/Binary3')]",
 				"[concat(variables('factoryId'), '/datasets/Binary2')]"
 			]
 		}
