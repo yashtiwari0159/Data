@@ -33,6 +33,12 @@ jobs:
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
+      - name: Debug Parameters
+        run: |
+          echo "Factory Name: ${{ secrets.FACTORY_NAME }}"
+          echo "Base URL: ${{ secrets.BASE_URL }}"
+          echo "Connection String Secret Name: ${{ secrets.CONNECTION_STRING_SECRET_NAME }}"
+
 
       - name: Deploy ARM Template to Production
         run: |
