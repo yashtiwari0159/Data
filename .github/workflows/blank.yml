@@ -23,6 +23,9 @@ jobs:
             az --version
         env: 
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
+          FACTORY_NAME: ${{ secrets.FACTORY_NAME }}
+          BASE_URL: ${{ secrets.BASE_URL }}
+          CONNECTION_STRING_SECRET_NAME: ${{ secrets.CONNECTION_STRING_SECRET_NAME }}
           
       - name: Create Azure CLI config directory
         run: mkdir -p ${{ runner.workspace }}/.azure
@@ -33,11 +36,7 @@ jobs:
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
-      - name: Debug Parameters
-        run: |
-          echo "Factory Name: ${{ secrets.FACTORY_NAME }}"
-          echo "Base URL: ${{ secrets.BASE_URL }}"
-          echo "Connection String Secret Name: ${{ secrets.CONNECTION_STRING_SECRET_NAME }}"
+
 
 
       - name: Deploy ARM Template to Production
@@ -45,9 +44,7 @@ jobs:
           az deployment group create \
             --resource-group Yash-Prod \
             --template-file ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateForFactory.json \
-            --parameters "factoryName=${{ secrets.FACTORY_NAME }}" \
-            --parameters "ls_kv_uat_properties_typeProperties_baseUrl=${{ secrets.BASE_URL }}" \
-            --parameters "ls_sto_uat_properties_typeProperties_connectionString_secretName=${{ secrets.CONNECTION_STRING_SECRET_NAME }}" \
+            --parameters "factoryName=${FACTORY_NAME}" "ls_kv_uat_properties_typeProperties_baseUrl=${BASE_URL}" "ls_sto_uat_properties_typeProperties_connectionString_secretName=${CONNECTION_STRING_SECRET_NAME}" \
             --mode Incremental \
             --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         env:
