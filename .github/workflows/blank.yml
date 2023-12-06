@@ -40,7 +40,7 @@ jobs:
           ls -R
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_CONFIG_DIR:  $HOME/azure-cli-temp/
+          AZURE_CONFIG_DIR:  $HOME/azure-cli-temp
 
       - name: Debug Deployment
         run: az deployment group validate --resource-group Yash-Prod --template-file ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateForFactory.json
