@@ -1,6 +1,5 @@
 name: Deploy to Production ADF
 
-
 on:
   push:
     branches:
@@ -28,35 +27,12 @@ jobs:
       - name: Create Azure CLI config directory
         run: mkdir -p ${{ runner.workspace }}/.azure
         
-      - name: List files
-        run: ls -R
-
-      - name: Print Directory
-        run: pwd
-        
       - name: Login to Azure
         run: az login --service-principal --tenant ${{ secrets.AZURE_TENANT_ID }} --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }}
          
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
-
-      - name: Print Azure CLI Configuration
-        run: ls -R $AZURE_CONFIG_DIR
-        
-      - name: Update Azure CLI
-        run: az upgrade --yes --debug
-
-      
-
-      - name: Print Parameters
-        run: |
-         echo "factoryName=${{ secrets.FACTORY_NAME }}"
-         echo "ls_kv_uat_properties_typeProperties_baseUrl=${{ secrets.BASE_URL }}"
-         echo "ls_sto_uat_properties_typeProperties_connectionString_secretName=${{ secrets.CONNECTION_STRING_SECRET_NAME }}"
-
-      - name: Debug Command
-        run: echo "az deployment group create --resource-group Yash-Prod --template-file ${{ runner.workspace }}/adf-uat-ga/ARMTemplateForFactory.json --parameters ${{ runner.workspace }}/adf-uat-ga/ARMTemplateParametersForFactory.json --mode Incremental --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}"
 
       - name: Deploy ARM Template to Production
         run: |
@@ -65,8 +41,7 @@ jobs:
             --template-file ${{ runner.workspace }}/Data/adf-uat-ga/ARMTemplateForFactory.json \
             --parameters factoryName="${{ secrets.FACTORY_NAME }}" ls_kv_uat_properties_typeProperties_baseUrl="${{ secrets.BASE_URL }}" ls_sto_uat_properties_typeProperties_connectionString_secretName="${{ secrets.CONNECTION_STRING_SECRET_NAME }}" \
             --mode Incremental \
-            --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }} \
-            2>&1 | tee deployment_output.txt
+            --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         env:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           AZURE_CONFIG_DIR:  ${{ runner.workspace }}/.azure
